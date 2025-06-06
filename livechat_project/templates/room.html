@@ -14,7 +14,7 @@
 
     <form id="post_form">
         {% csrf_token %}
-        <input id="usernmae" type="hidden" name="username" value="{{ username }}">
+        <input id="username" type="hidden" name="username" value="{{ username }}">
         <input id="room_id" type="hidden" name="room_id" value="{{room_details.id}}">
         <input id="message" type="text" name="message">
 
@@ -26,19 +26,19 @@
     $(document).on('submit', '#post_form', function(e){
         e.preventDefault();
 
-        $ajax({
+        $.ajax({
             type:'POST',
             url:'/send',
             data:{
+                room_id:$('#room_id').val(),
                 username:$('#username').val(),
-                room_name:$('room_name').val(),
-                message:$('message').val(),
-                csrfMiddlewaretoken:$('input[name=csrfMiddlewaretoken]').val(),
-            };
+                message:$('#message').val(),
+                csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
 
             success: function(data){
-                alert(data)
-            };
+                alert(data);
+            }
         });
         document.getElementById('message').value = '';
     });

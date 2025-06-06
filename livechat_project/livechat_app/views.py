@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
-from .models import Room
+from .models import Room, Message
+from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
@@ -33,3 +34,14 @@ def checkview(request):
     
     else:
         return redirect('index')
+    
+def send(request):
+    if request.method == 'POST':
+        room_id = request.POST['room_id']
+        username = request.POST['username']
+        message = request.POST['message']
+
+        new_message = Message.objects.create(value=message, user=username, room=room_id)
+        new_message.save()
+        
+    return HttpResponse('Message sent succesfully!')
