@@ -20,6 +20,45 @@
 
         <button type="submit" value="Send">Send Message</button>
     </form>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            setInterval(function(){
+                $.ajax({
+                    type: 'GET',
+                    url: 'get_messages/{{ room_details.id }}',
+                    success: function(response) {
+                        $("#div-messages").empty();
+
+                        // Transforma os valores em array e inverte
+                        const messages = Object.values(response.room_messages).reverse();
+
+                        messages.forEach((message) => {
+                            const temp = `
+                                <div class="div-message">
+                                    ${message.user}
+                                    ${message.value}
+                                    ${message.date}
+                                </div>
+                            `;
+                            $("#div-messages").append(temp);
+                        });
+                    },
+
+                    error: function() {
+                        alert('An error ocurred')
+                    }
+                });}, 500);
+        });
+    </script>
+
+    <div id="div-messages">
+        {% for message in room_messages %}
+            <h2>{{ message.user }}</h2>
+            <p>{{ message.date }}</p>
+            <p>{{ message.value }}</p>
+        {% endfor %}
+    </div>
 </body>
 
 <script type="text/javascript">
@@ -34,12 +73,9 @@
                 username:$('#username').val(),
                 message:$('#message').val(),
                 csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-            },
-
-            success: function(data){
-                alert(data);
             }
         });
+        
         document.getElementById('message').value = '';
     });
 </script>

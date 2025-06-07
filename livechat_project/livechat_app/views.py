@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .models import Room, Message
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 def index(request):
@@ -28,8 +28,8 @@ def checkview(request):
             return redirect('/'+room_name+'/?username='+username)
         
         else:
-            newroom = Room.objects.create(name=room_name)
-            newroom.save()
+            new_room = Room.objects.create(name=room_name)
+            new_room.save()
             return redirect('/'+room_name+'/?username='+username)
     
     else:
@@ -41,7 +41,17 @@ def send(request):
         username = request.POST['username']
         message = request.POST['message']
 
-        new_message = Message.objects.create(value=message, user=username, room=room_id)
+        new_message = Message.objects.create(value=message, user=username, room_id=room_id)
         new_message.save()
         
     return HttpResponse('Message sent succesfully!')
+
+def get_messages(request, room_name, room_id):
+    if request.method == 'GET':
+        room_messages = Message.objects.filter(room_id=room_id)
+
+        print(f'\n\Room ID: {room_id}\nRoom Messages: {room_messages}\n\n')
+
+        context = {'room_messages': list(room_messages.values())}
+
+        return JsonResponse(context)

@@ -3,3 +3,7 @@ body {
     font-family: Arial;
     font-weight: bold;
 }
+
+.div-message {
+    border: 2px solid rgb(186, 186, 186);
+}
