@@ -42,6 +42,8 @@ def checkview(request):
 def send(request):
     if request.method == 'POST':
         room_id = request.POST['room_id']
+        #room = Room.objects.filter(room_id=room_id) # Django creates OBJETO + _id automatically
+
         username = request.POST['username']
         message = request.POST['message']
 
@@ -56,14 +58,11 @@ def get_available_rooms(request):
         context = {'available_rooms': available_rooms}
 
         return JsonResponse(context)
-    
+
 def get_messages(request, room_name, room_id):
     if request.method == 'GET':
         room_messages = Message.objects.filter(room_id=room_id)
-
-
-        print(f'\n\Room ID: {room_id}\nRoom Messages: {room_messages}\n\n')
-
+        
         context = {'room_messages': list(room_messages.values())}
 
         return JsonResponse(context)
