@@ -21,34 +21,36 @@
         <button type="submit" value="Send">Send Message</button>
     </form>
 
-    <script type="text/javascript">
+    <script>
         $(document).ready(function(){
-            setInterval(function(){
+            function getMessages() {
                 $.ajax({
                     type: 'GET',
                     url: 'get_messages/{{ room_details.id }}',
                     success: function(response) {
                         $("#div-messages").empty();
-
-                        // Transforma os valores em array e inverte
+                        
                         const messages = Object.values(response.room_messages).reverse();
 
                         messages.forEach((message) => {
-                            const temp = `
+                            const message_string = `
                                 <div class="div-message">
                                     ${message.user}
                                     ${message.value}
                                     ${message.date}
                                 </div>
-                            `;
-                            $("#div-messages").append(temp);
-                        });
+                            `
+                            $('#div-messages').append(message_string);
+                            //$('#div-messages').scrollTop($("#div-messages")[0].scrollHeight);
+                        })
                     },
-
                     error: function() {
                         alert('An error ocurred')
                     }
-                });}, 500);
+                })
+            }
+
+            setInterval(getMessages, 500);
         });
     </script>
 
@@ -61,7 +63,7 @@
     </div>
 </body>
 
-<script type="text/javascript">
+<script>
     $(document).on('submit', '#post_form', function(e){
         e.preventDefault();
 
