@@ -48,7 +48,8 @@ def send(request):
 
 def get_messages(request, room_name, room_id):
     if request.method == 'GET':
-        room_messages = Message.objects.filter(room_id=room_id)
+        room_messages = Message.objects.filter(room_id=room_id).order_by('-date')[:100]
+
 
         print(f'\n\Room ID: {room_id}\nRoom Messages: {room_messages}\n\n')
 

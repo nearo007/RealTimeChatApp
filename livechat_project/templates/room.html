@@ -32,7 +32,7 @@
                     success: function (response) {
                         $("#div-messages").empty();
 
-                        const messages = Object.values(response.room_messages).reverse();
+                        const messages = Object.values(response.room_messages);
 
                         messages.forEach((message) => {
                             const formated_date = formatDate(message.date);
