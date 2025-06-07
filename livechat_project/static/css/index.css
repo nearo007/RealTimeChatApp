@@ -1,91 +1,98 @@
 /* Reset básico */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #333;
-  padding: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 40px 20px;
+    min-height: 100vh;
 }
 
-/* Formulário */
+/* Formulário principal */
 form {
-  background: #ffffff;
-  padding: 2rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  animation: fadeIn 0.6s ease-out;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
 }
 
-/* Rótulos */
 form label {
-  font-weight: 600;
-  margin-bottom: 0.3rem;
-  color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 4px;
 }
 
-/* Inputs */
 form input[type="text"] {
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1.5px solid #ccc;
-  transition: border-color 0.3s ease;
-  outline: none;
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
 }
 
 form input[type="text"]:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+    outline: none;
+    border-color: #6c63ff;
 }
 
-/* Botão */
 form button {
-  margin-top: 1rem;
-  background-color: #4a90e2;
-  color: white;
-  font-weight: 600;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+    padding: 12px;
+    background: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
 }
 
 form button:hover {
-  background-color: #357abd;
-  transform: scale(1.02);
+    background: #5750d7;
 }
 
-/* Animação suave */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Lista de salas */
+.div-available-rooms {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    max-width: 400px;
 }
 
-/* Responsivo */
-@media (max-width: 480px) {
-  form {
-    padding: 1.5rem;
-  }
+.div-available-rooms label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 12px;
+    color: #444;
+}
+
+.div-available-rooms p {
+    padding: 10px 14px;
+    border-radius: 8px;
+    background: #f7f7f7;
+    margin-bottom: 10px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    cursor: default;
+}
+
+.div-available-rooms p:hover {
+    background: #e0e0e0;
+    transform: scale(1.02);
 }

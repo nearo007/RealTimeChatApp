@@ -23,5 +23,12 @@
         
         <button type="submit">Enter Room</button>
     </form>
+
+    <div class="div-available-rooms">
+        <label>Salas Disponíveis:</label>
+        {% for room in available_rooms %}
+            <p>{{ room.name }}</p>
+        {% endfor %}
+    </div>
 </body>
 </html>

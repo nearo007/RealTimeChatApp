@@ -5,7 +5,11 @@ from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    available_rooms = list(Room.objects.get_queryset())
+
+    context = {'available_rooms': available_rooms}
+
+    return render(request, 'index.html', context)
 
 def room(request, room):
     room_details = get_object_or_404(Room, name=room)
