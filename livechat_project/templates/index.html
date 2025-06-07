@@ -6,6 +6,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
@@ -24,7 +27,39 @@
         <button type="submit">Enter Room</button>
     </form>
 
-    <div class="div-available-rooms">
+    <script>
+        $(document).ready(function () {
+            function updateAvailableRooms() {
+                $.ajax({
+                    type: 'GET',
+                    url: 'get_available_rooms',
+                    success: function (response) {
+                        $('#div-available-rooms').empty();
+
+                        const rooms = Object.values(response.available_rooms);
+
+                        rooms.forEach((room) => {
+                            const room_string = `
+                                <form onsubmit="saveUsername(); changeHiddenInput()" action="checkview" method="post" class="room-form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="room_name" value="${room.name}">
+
+                                    <input class="input_username input_hidden_username" type="hidden" name="username" value="Anonymous">
+
+                                    <button type="submit"><p>${room.name}</p></button>
+                                </form>
+                            `;
+                            $('#div-available-rooms').append(room_string);
+                        });
+                    }
+                });
+            }
+            setInterval(updateAvailableRooms, 1000);
+        });
+    </script>
+
+
+    <div id="div-available-rooms" class="div-available-rooms">
         <label>Salas Disponíveis:</label>
 
         {% for room in available_rooms %}

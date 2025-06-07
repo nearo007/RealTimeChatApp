@@ -50,6 +50,13 @@ def send(request):
         
     return HttpResponse('Message sent succesfully!')
 
+def get_available_rooms(request):
+    if request.method == 'GET':
+        available_rooms = list(Room.objects.values())
+        context = {'available_rooms': available_rooms}
+
+        return JsonResponse(context)
+    
 def get_messages(request, room_name, room_id):
     if request.method == 'GET':
         room_messages = Message.objects.filter(room_id=room_id)
