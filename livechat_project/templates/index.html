@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
-    <form action="checkview" method="post">
+    <form action="checkview" onsubmit="saveUsername()" method="post">
         {% csrf_token %}
         <label>Room Name</label>
         <input type="text" name="room_name">
@@ -17,7 +17,7 @@
         <br>
 
         <label>Username</label>
-        <input type="text" name="username">
+        <input id="input_username" class="input_username" type="text" name="username">
 
         <br>
         
@@ -28,15 +28,43 @@
         <label>Salas Disponíveis:</label>
 
         {% for room in available_rooms %}
-            <form action="checkview" method="post" class="room-form">
+            <form onsubmit="saveUsername(); changeHiddenInput()" action="checkview" method="post" class="room-form">
                 {% csrf_token %}
                 <input type="hidden" name="room_name" value="{{ room.name }}">
 
-                <input type="hidden" name="username" value="usuario {{room.name}}">
+                <input class="input_username input_hidden_username" type="hidden" name="username" value="Anonymous">
 
                 <button type="submit"><p>{{ room.name }}</p></button>
             </form>
         {% endfor %}
     </div>
 </body>
+
+<script>
+    function saveUsername() {
+        const username = document.getElementById('input_username').value || 'Anonymous';
+        localStorage.setItem('username', username);
+    }
+
+    function loadUsername() {
+        const saved_username = localStorage.getItem('username') || '';
+        //document.getElementById('input_username').value = saved_username;
+        const all_inputs = document.querySelectorAll('.input_username');
+
+        all_inputs.forEach((input) => {
+            input.value = saved_username;
+        })
+    }
+
+    function changeHiddenInput() {
+        all_inputs = document.querySelectorAll('.input_hidden_username');
+
+        all_inputs.forEach((input) => {
+            input.value = localStorage.getItem('username');
+        })
+    }
+
+    loadUsername()
+</script>
+
 </html>
