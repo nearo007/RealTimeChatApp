@@ -87,8 +87,15 @@ form#post_form {
   max-width: 600px;
   display: flex;
   gap: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
+form#post_form p {
+  font-size: 20px;
+  color: #407ebc;
+}
 form#post_form input[type="text"] {
   flex-grow: 1;
   padding: 0.75rem 1rem;

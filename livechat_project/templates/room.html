@@ -65,6 +65,7 @@
     </div>
 
     <form id="post_form">
+        <p>{{ username }}</p>
         {% csrf_token %}
         <input id="username" type="hidden" name="username" value="{{ username }}">
         <input id="room_id" type="hidden" name="room_id" value="{{ room_details.id }}">
