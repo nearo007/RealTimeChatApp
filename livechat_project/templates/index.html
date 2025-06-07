@@ -59,19 +59,22 @@
     </script>
 
 
-    <div id="div-available-rooms" class="div-available-rooms">
+    <div class="div-rooms">
         <label>Salas Disponíveis:</label>
 
-        {% for room in available_rooms %}
-            <form onsubmit="saveUsername(); changeHiddenInput()" action="checkview" method="post" class="room-form">
-                {% csrf_token %}
-                <input type="hidden" name="room_name" value="{{ room.name }}">
+        <div id="div-available-rooms" class="div-available-rooms">
+            {% for room in available_rooms %}
+                <form onsubmit="saveUsername(); changeHiddenInput()" action="checkview" method="post" class="room-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="room_name" value="{{ room.name }}">
 
-                <input class="input_username input_hidden_username" type="hidden" name="username" value="Anonymous">
+                    <input class="input_username input_hidden_username" type="hidden" name="username" value="Anonymous">
 
-                <button type="submit"><p>{{ room.name }}</p></button>
-            </form>
-        {% endfor %}
+                    <button type="submit"><p>{{ room.name }}</p></button>
+                </form>
+            {% endfor %}    
+        </div>
+        
     </div>
 </body>
 
