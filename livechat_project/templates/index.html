@@ -26,8 +26,16 @@
 
     <div class="div-available-rooms">
         <label>Salas Disponíveis:</label>
+
         {% for room in available_rooms %}
-            <p>{{ room.name }}</p>
+            <form action="checkview" method="post" class="room-form">
+                {% csrf_token %}
+                <input type="hidden" name="room_name" value="{{ room.name }}">
+
+                <input type="hidden" name="username" value="usuario {{room.name}}">
+
+                <button type="submit"><p>{{ room.name }}</p></button>
+            </form>
         {% endfor %}
     </div>
 </body>

@@ -1,4 +1,4 @@
-/* Reset básico */
+/* Reset e base */
 * {
     margin: 0;
     padding: 0;
@@ -6,19 +6,21 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f2f4f8;
     color: #333;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 40px 20px;
     min-height: 100vh;
+    width: 60%;
+    margin: auto;
 }
 
-/* Formulário principal */
-form {
+/* Form principal */
+form[action="checkview"]:not(.room-form) {
     background: #fff;
     padding: 30px;
     border-radius: 12px;
@@ -28,15 +30,14 @@ form {
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
-form label {
+form[action="checkview"]:not(.room-form) label {
     font-weight: 600;
-    margin-bottom: 4px;
 }
 
-form input[type="text"] {
+form[action="checkview"]:not(.room-form) input[type="text"] {
     padding: 10px 14px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -44,12 +45,12 @@ form input[type="text"] {
     transition: border-color 0.2s ease;
 }
 
-form input[type="text"]:focus {
+form[action="checkview"]:not(.room-form) input[type="text"]:focus {
     outline: none;
     border-color: #6c63ff;
 }
 
-form button {
+form[action="checkview"]:not(.room-form) button {
     padding: 12px;
     background: #6c63ff;
     color: white;
@@ -61,38 +62,54 @@ form button {
     transition: background 0.3s ease;
 }
 
-form button:hover {
-    background: #5750d7;
+form[action="checkview"]:not(.room-form) button:hover {
+    background: #554dde;
 }
 
-/* Lista de salas */
+/* Salas disponíveis */
 .div-available-rooms {
-    background: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
     width: 100%;
     max-width: 400px;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .div-available-rooms label {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: bold;
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     color: #444;
 }
 
-.div-available-rooms p {
-    padding: 10px 14px;
-    border-radius: 8px;
-    background: #f7f7f7;
-    margin-bottom: 10px;
-    transition: background 0.2s ease, transform 0.2s ease;
-    cursor: default;
+/* Cada botão de sala */
+.room-form {
+    margin-bottom: 12px;
 }
 
-.div-available-rooms p:hover {
-    background: #e0e0e0;
+.room-form button {
+    width: 100%;
+    padding: 14px;
+    background: #ececec;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.room-form button:hover {
+    background: #d6d6d6;
     transform: scale(1.02);
+}
+
+.room-form button p {
+    margin: 0;
+    font-weight: 500;
+    color: #333;
 }
