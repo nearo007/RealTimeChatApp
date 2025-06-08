@@ -15,7 +15,7 @@
     <form action="checkview" onsubmit="saveUsername()" method="post">
         {% csrf_token %}
         <label>Room Name</label>
-        <input type="text" name="room_name">
+        <input type="text" name="room_name" required>
 
         <br>
 
