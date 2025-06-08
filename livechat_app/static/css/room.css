@@ -81,6 +81,14 @@ h1 {
   white-space: pre-wrap; /* preserva quebras de linha */
 }
 
+.div-form-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 600px;
+}
+
 /* Formulário */
 form#post_form {
   width: 100%;
@@ -136,20 +144,14 @@ form#post_form button:hover {
   box-shadow: 0 6px 12px rgba(53, 122, 189, 0.5);
 }
 
-.form-delete-room {
-  position: fixed;
-  top: 30px;
-  right: 20px;
-}
-
-.form-delete-room button {
+.form-room-button button {
   background-color: transparent;
   border: none;
   cursor: pointer;
   display: flex;
 }
 
-.form-delete-room img {
+.form-room-button img {
   width: 40px;
 }
 

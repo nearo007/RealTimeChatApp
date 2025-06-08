@@ -11,6 +11,9 @@ def index(request):
 
     return render(request, 'index.html', context)
 
+def return_main_page(request, room_name):
+    return redirect('index')
+
 def room(request, room):
     room_details = get_object_or_404(Room, name=room)
     username = request.GET.get('username')
