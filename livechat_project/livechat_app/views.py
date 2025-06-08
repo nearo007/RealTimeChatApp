@@ -66,3 +66,10 @@ def get_messages(request, room_name, room_id):
         context = {'room_messages': list(room_messages.values())}
 
         return JsonResponse(context)
+    
+def delete_room(request, room_name):
+    if request.method == 'GET':
+        room = Room.objects.get(name=room_name)
+        room.delete()
+
+        return redirect('index')

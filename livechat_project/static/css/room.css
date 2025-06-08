@@ -136,6 +136,23 @@ form#post_form button:hover {
   box-shadow: 0 6px 12px rgba(53, 122, 189, 0.5);
 }
 
+.form-delete-room {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+.form-delete-room button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.form-delete-room img {
+  width: 40px;
+}
+
 /* Scrollbar estilizada */
 #div-messages::-webkit-scrollbar {
   width: 8px;
