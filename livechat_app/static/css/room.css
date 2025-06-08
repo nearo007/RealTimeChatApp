@@ -75,10 +75,10 @@ h1 {
 
 /* Texto da mensagem */
 .p-value {
-  font-size: 1rem;
-  line-height: 1.3;
-  color: #222;
-  white-space: pre-wrap; /* preserva quebras de linha */
+    white-space: pre-wrap; /* preserva quebras de linha e permite quebra automática */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
 }
 
 .div-form-header {
