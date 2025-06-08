@@ -7,8 +7,8 @@
 
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #f2f4f8;
-    color: #333;
+    background: #000000;
+    color: #ffffff;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,14 +17,14 @@ body {
     min-height: 100vh;
     width: 60%;
     margin: auto;
+    font-family: 'Ubuntu';
 }
 
 /* Form principal */
 form[action="checkview"]:not(.room-form) {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.1);
     padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 5px;
     width: 100%;
     max-width: 400px;
     display: flex;
@@ -39,8 +39,10 @@ form[action="checkview"]:not(.room-form) label {
 
 form[action="checkview"]:not(.room-form) input[type="text"] {
     padding: 10px 14px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+    background: transparent;
+    color: white;
+    border: 3px solid #ccc;
+    border-radius: 2px;
     font-size: 1rem;
     transition: border-color 0.2s ease;
 }
@@ -70,12 +72,24 @@ form[action="checkview"]:not(.room-form) button:hover {
 .div-rooms {
     width: 100%;
     max-width: 400px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
     padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
     height: 500px;
     overflow-y: scroll;
+}
+
+.div-rooms::-webkit-scrollbar {
+    width: 6px;
+}
+
+.div-rooms::-webkit-scrollbar-track {
+    background: #201942;
+}
+
+.div-rooms::-webkit-scrollbar-thumb {
+    background: #6963cf;
 }
 
 .div-rooms label {
@@ -83,7 +97,6 @@ form[action="checkview"]:not(.room-form) button:hover {
     font-weight: bold;
     display: block;
     margin-bottom: 16px;
-    color: #444;
 }
 
 /* Cada botão de sala */
@@ -94,9 +107,10 @@ form[action="checkview"]:not(.room-form) button:hover {
 .room-form button {
     width: 100%;
     padding: 14px;
-    background: #ececec;
-    border: none;
-    border-radius: 8px;
+    background: transparent;
+    color: white;
+    border: 3px solid #6c63ff;
+    border-radius: 3px;
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.25s ease;
@@ -106,14 +120,13 @@ form[action="checkview"]:not(.room-form) button:hover {
 }
 
 .room-form button:hover {
-    background: #d6d6d6;
+    background: rgba(255, 255, 255, 0.1);
     transform: scale(1.02);
 }
 
 .room-form button p {
     margin: 0;
     font-weight: 500;
-    color: #333;
 }
 
 /* Responsividade para celulares */
