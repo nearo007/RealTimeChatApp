@@ -5,26 +5,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nearochat.my</title>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="shortcut icon" href="{% static 'images/favcon/favcon.png' %}" type="image/x-icon">
 </head>
 <body>
     <form action="checkview" onsubmit="saveUsername()" method="post">
         {% csrf_token %}
-        <label>Room Name</label>
+        <label>Nome da Sala</label>
         <input type="text" name="room_name" required>
 
         <br>
 
-        <label>Username</label>
+        <label>Nome de Usuário</label>
         <input id="input_username" class="input_username" type="text" name="username">
 
         <br>
         
-        <button type="submit">Enter Room</button>
+        <button type="submit">Entrar</button>
     </form>
 
     <script>
