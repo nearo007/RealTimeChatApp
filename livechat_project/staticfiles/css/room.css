@@ -1,0 +1,185 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+/* Título da sala */
+h1 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* Container das mensagens */
+#div-messages {
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
+  padding: 1rem 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse; /* para mostrar as mensagens mais recentes no topo */
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Cada mensagem */
+.div-message {
+  background: #f0f4f8;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.div-message:hover {
+  background-color: #e1e8f0;
+}
+
+/* Info do usuário e data */
+.div-message-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.p-user {
+  color: #407ebc;
+  font-size: 1rem;
+}
+
+.p-date {
+  font-style: italic;
+}
+
+/* Texto da mensagem */
+.p-value {
+  font-size: 1rem;
+  line-height: 1.3;
+  color: #222;
+  white-space: pre-wrap; /* preserva quebras de linha */
+}
+
+/* Formulário */
+form#post_form {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  gap: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+form#post_form p {
+  font-size: 20px;
+  color: #407ebc;
+}
+form#post_form input[type="text"] {
+  flex-grow: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 50px;
+  border: 1.5px solid #ccc;
+  transition: border-color 0.3s ease;
+  outline-offset: 2px;
+}
+
+form#post_form input[type="text"]:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+}
+
+/* Botão enviar */
+form#post_form button {
+  background-color: #4a90e2;
+  color: white;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(74, 144, 226, 0.3);
+}
+
+form#post_form button img {
+  filter: invert();
+  width: 30px;
+}
+
+form#post_form button:hover {
+  background-color: #357abd;
+  box-shadow: 0 6px 12px rgba(53, 122, 189, 0.5);
+}
+
+.form-delete-room {
+  position: fixed;
+  top: 30px;
+  right: 20px;
+}
+
+.form-delete-room button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+}
+
+.form-delete-room img {
+  width: 40px;
+}
+
+/* Scrollbar estilizada */
+#div-messages::-webkit-scrollbar {
+  width: 8px;
+}
+
+#div-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 8px;
+}
+
+#div-messages::-webkit-scrollbar-thumb {
+  background: #4a90e2;
+  border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+  #div-messages {
+    height: 300px;
+  }
+
+  form#post_form {
+    flex-direction: column;
+  }
+
+  form#post_form button {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 12px;
+  }
+}
