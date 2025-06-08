@@ -115,3 +115,31 @@ form[action="checkview"]:not(.room-form) button:hover {
     font-weight: 500;
     color: #333;
 }
+
+/* Responsividade para celulares */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+    form[action="checkview"]:not(.room-form),
+    .div-rooms {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .div-rooms {
+        height: auto;
+        max-height: 400px;
+    }
+
+    .room-form button {
+        font-size: 0.95rem;
+        padding: 12px;
+    }
+}
