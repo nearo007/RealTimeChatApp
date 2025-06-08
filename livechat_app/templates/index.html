@@ -16,12 +16,12 @@
     <form action="checkview" onsubmit="saveUsername()" method="post">
         {% csrf_token %}
         <label>Nome da Sala</label>
-        <input type="text" name="room_name" required>
+        <input type="text" name="room_name" required maxlength="30">
 
         <br>
 
         <label>Nome de Usuário</label>
-        <input id="input_username" class="input_username" type="text" name="username">
+        <input id="input_username" class="input_username" type="text" name="username" maxlength="30">
 
         <br>
         
@@ -81,7 +81,7 @@
 
 <script>
     function saveUsername() {
-        const username = document.getElementById('input_username').value || 'Anonymous';
+        const username = document.getElementById('input_username').value || 'anônimo';
         localStorage.setItem('username', username);
     }
 
