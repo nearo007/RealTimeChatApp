@@ -41,9 +41,7 @@ def checkview(request):
     
 def send(request):
     if request.method == 'POST':
-        room_id = request.POST['room_id']
-        #room = Room.objects.filter(room_id=room_id) # Django creates OBJETO + _id automatically
-
+        room_id = request.POST['room_id'] # Django creates OBJETO + _id automatically
         username = request.POST['username']
         message = request.POST['message']
 
