@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
-  color: #333;
+  background: #000000;
+  color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,6 @@ body {
 /* Título da sala */
 h1 {
   font-size: 2rem;
-  color: #222;
   margin-bottom: 1.5rem;
   text-align: center;
   font-weight: 700;
@@ -30,7 +29,7 @@ h1 {
   width: 100%;
   max-width: 600px;
   height: 400px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   box-shadow: 0 4px 12px rgb(0 0 0 / 0.1);
   padding: 1rem 1.5rem;
@@ -43,15 +42,15 @@ h1 {
 
 /* Cada mensagem */
 .div-message {
-  background: #f1f0f8;
+  background: rgba(255, 255, 255, 0.1);
   padding: 0.75rem 1rem;
   border-radius: 8px;
   box-shadow: inset 0 0 5px rgb(0 0 0 / 0.05);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
 .div-message:hover {
-  background-color: #e3e1f0;
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* Info do usuário e data */
@@ -60,12 +59,12 @@ h1 {
   justify-content: space-between;
   margin-bottom: 0.3rem;
   font-size: 0.85rem;
-  color: #666;
+  color: #d6d6d6;
   font-weight: 600;
 }
 
 .p-user {
-  color: #554dde;
+  color: #9994ff;
   font-size: 1rem;
 }
 
@@ -89,6 +88,11 @@ h1 {
   width: 600px;
 }
 
+.div-form-header img {
+  filter: invert();
+  width: 30px;
+}
+
 /* Formulário */
 form#post_form {
   width: 100%;
@@ -103,16 +107,18 @@ form#post_form {
 form#post_form p {
   font-size: 20px;
   font-weight: 600;
-  color: #554dde;
+  color: #6c63ff;
 }
 form#post_form input[type="text"] {
   flex-grow: 1;
   padding: 0.75rem 1rem;
   font-size: 1rem;
-  border-radius: 50px;
-  border: 1.5px solid #ccc;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  border: 3px solid #ccc;
   transition: border-color 0.3s ease;
   outline-offset: 2px;
+  color: white;
 }
 
 form#post_form input[type="text"]:focus {
@@ -152,22 +158,18 @@ form#post_form button:hover {
   display: flex;
 }
 
-.form-room-button img {
-  width: 40px;
-}
-
 /* Scrollbar estilizada */
 #div-messages::-webkit-scrollbar {
   width: 6px;
 }
 
 #div-messages::-webkit-scrollbar-track {
-  background: #9590b2;
+  background: #504c98;
   border-radius: 2px;
 }
 
 #div-messages::-webkit-scrollbar-thumb {
-  background: #504c98;
+  background: #927fff;
   border-radius: 2px;
 }
 

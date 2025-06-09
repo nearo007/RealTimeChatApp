@@ -17,15 +17,16 @@
     <link rel="shortcut icon" href="{% static 'images/favcon/favcon.png' %}" type="image/x-icon">
 </head>
 <body>
-    <form action="checkview" onsubmit="saveUsername()" method="post">
+    <form action="checkview" onsubmit="saveUsername(); loadUsername()" method="post">
         {% csrf_token %}
-        <label>Nome da Sala</label>
-        <input type="text" name="room_name" required maxlength="30">
+
+        <label>Nome de Usuário</label>
+        <input class="input_username" type="text" name="username" maxlength="30">
 
         <br>
 
-        <label>Nome de Usuário</label>
-        <input id="input_username" class="input_username" type="text" name="username" maxlength="30">
+        <label>Nome da Sala</label>
+        <input type="text" name="room_name" required maxlength="30">
 
         <br>
         
@@ -45,11 +46,11 @@
 
                         rooms.forEach((room) => {
                             const room_string = `
-                                <form onsubmit="saveUsername(); changeHiddenInput()" action="checkview" method="post" class="room-form">
+                                <form onsubmit="saveUsername(); loadUsername()" action="checkview" method="post" class="room-form">
                                     {% csrf_token %}
                                     <input type="hidden" name="room_name" value="${room.name}">
 
-                                    <input class="input_username input_hidden_username" type="hidden" name="username" value="Anonymous">
+                                    <input class="input_hidden_username" type="hidden" name="username" value="anônimo">
 
                                     <button type="submit"><p>${room.name}</p></button>
                                 </form>
@@ -69,11 +70,11 @@
 
         <div id="div-available-rooms" class="div-available-rooms">
             {% for room in available_rooms %}
-                <form onsubmit="saveUsername(); changeHiddenInput()" action="checkview" method="post" class="room-form">
+                <form onsubmit="saveUsername(); loadUsername()" action="checkview" method="post" class="room-form">
                     {% csrf_token %}
                     <input type="hidden" name="room_name" value="{{ room.name }}">
 
-                    <input class="input_username input_hidden_username" type="hidden" name="username" value="Anonymous">
+                    <input class="input_hidden_username" type="hidden" name="username" value="anônimo">
 
                     <button type="submit"><p>{{ room.name }}</p></button>
                 </form>
@@ -85,27 +86,47 @@
 
 <script>
     function saveUsername() {
-        const username = document.getElementById('input_username').value || 'anônimo';
-        localStorage.setItem('username', username);
+        const username = document.querySelector('.input_username').value;
+
+        if (username) {
+            localStorage.setItem('username', username);
+        }
     }
 
     function loadUsername() {
-        const saved_username = localStorage.getItem('username') || '';
-        //document.getElementById('input_username').value = saved_username;
-        const all_inputs = document.querySelectorAll('.input_username');
+        const saved_username = localStorage.getItem('username');
 
-        all_inputs.forEach((input) => {
-            input.value = saved_username;
-        })
+        if (saved_username) {
+            const input_username = document.querySelector('.input_username');
+            const hidden_inputs = document.querySelectorAll('.input_hidden_username');
+
+            input_username.value = saved_username;
+
+            hidden_inputs.forEach((input) => {
+                input.value = saved_username;
+            })
+        }
+
+        else {
+            const input_username = document.querySelector('.input_username');
+            const hidden_inputs = document.querySelectorAll('.input_hidden_username');
+            
+            input_username.value = 'anônimo';
+            
+            // TODO maybe unnecessary
+            hidden_inputs.forEach((input) => {
+                input.value = 'anônimo';
+            })
+        }
     }
 
-    function changeHiddenInput() {
+    /*function changeHiddenInput() {
         all_inputs = document.querySelectorAll('.input_hidden_username');
 
         all_inputs.forEach((input) => {
-            input.value = localStorage.getItem('username');
+            input.value = localStorage.getItem('username') || 'anônimo';
         })
-    }
+    }*/
 
     loadUsername()
 </script>
