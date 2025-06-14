@@ -64,7 +64,7 @@ def get_messages(request, room_name, room_id):
     if request.method == 'GET':
         room_messages = Message.objects.filter(room_id=room_id)
         
-        context = {'room_messages': list(room_messages.values())}
+        context = {'room_messages': list(room_messages.values().order_by('date'))}
 
         return JsonResponse(context)
     
