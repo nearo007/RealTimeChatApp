@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from .models import Room, Message
 from django.http import HttpResponse, JsonResponse
+from django.utils import timezone
+from datetime import timedelta
 
 # Create your views here.
 def index(request):
@@ -74,3 +76,19 @@ def delete_room(request, room_name):
         room.delete()
 
         return redirect('index')
+    
+def clear_empty_rooms(request):
+    available_rooms = list(Room.objects.values())
+
+    for room in available_rooms:
+        last_message = Message.objects.filter(room=room['id']).last()
+
+        if last_message:
+            if timezone.now() >= (last_message.date + timedelta(minutes=5)):
+                print(last_message.value, last_message.date)
+                Room.objects.filter(id=room['id']).delete()
+
+
+        #TODO caso não tenha nenuhma mensagem
+
+    return HttpResponse(status=204)

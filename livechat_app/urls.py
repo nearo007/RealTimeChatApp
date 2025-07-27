@@ -9,5 +9,6 @@ urlpatterns = [
     path('room/<str:room_name>/get_messages/<str:room_id>', views.get_messages, name='get_messages'),
     path('get_available_rooms', views.get_available_rooms, name='get_available_rooms'),
     path('room/<str:room_name>/return_main_page', views.return_main_page, name='return_main_page'),
-    path('room/<str:room_name>/delete_room', views.delete_room, name='delete_room')
+    path('room/<str:room_name>/delete_room', views.delete_room, name='delete_room'),
+    path('clear_empty_rooms', views.clear_empty_rooms, name='clear_empty_rooms')
 ]
