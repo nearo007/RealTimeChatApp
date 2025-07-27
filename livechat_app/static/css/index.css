@@ -14,8 +14,9 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 40px 20px;
-    min-height: 100vh;
-    width: 60%;
+    height: 100vh;
+    width: 100%;
+    height: 100vh;
     margin: auto;
     font-family: 'Ubuntu';
 }
@@ -26,11 +27,11 @@ form[action="checkview"]:not(.room-form) {
     padding: 30px;
     border-radius: 5px;
     width: 100%;
-    max-width: 400px;
+    max-width: 30%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-bottom: 50px;
 }
 
 form[action="checkview"]:not(.room-form) label {
@@ -71,12 +72,12 @@ form[action="checkview"]:not(.room-form) button:hover {
 /* Salas disponíveis */
 .div-rooms {
     width: 100%;
-    max-width: 400px;
+    max-width: 50%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.1);
     color: white;
     padding: 24px;
     border-radius: 5px;
-    height: 500px;
     overflow-y: scroll;
 }
 
