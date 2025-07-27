@@ -79,16 +79,16 @@ def delete_room(request, room_name):
     
 def clear_empty_rooms(request):
     available_rooms = list(Room.objects.values())
+    inactive_time_limit = timedelta(minutes=30)
 
     for room in available_rooms:
         last_message = Message.objects.filter(room=room['id']).last()
 
         if last_message:
-            if timezone.now() >= (last_message.date + timedelta(minutes=5)):
-                print(last_message.value, last_message.date)
+            if timezone.now() >= (last_message.date + inactive_time_limit):
                 Room.objects.filter(id=room['id']).delete()
 
-
-        #TODO caso não tenha nenuhma mensagem
+        elif timezone.now() >= (room['date'] + inactive_time_limit):
+            Room.objects.filter(id=room['id']).delete()
 
     return HttpResponse(status=204)

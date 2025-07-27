@@ -4,6 +4,7 @@ from django.utils import timezone
 # Create your models here.
 class Room(models.Model):
     name = models.CharField(max_length=30)
+    date = models.DateTimeField(default=timezone.now)
 
 class Message(models.Model):
     value = models.CharField(max_length=255)
