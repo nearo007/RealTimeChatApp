@@ -87,7 +87,7 @@
         {% csrf_token %}
         <input id="username" type="hidden" name="username" value="{{ username }}">
         <input id="room_id" type="hidden" name="room_id" value="{{ room_details.id }}">
-        <input id="message" type="text" name="message">
+        <input id="message" type="text" name="message" autocomplete="off">
 
         <button type="submit" value="Send"><img src="{% static 'images/icons/send.png' %}" alt="Send Message"></button>
     </form>
