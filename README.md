@@ -4,6 +4,8 @@
 
 ---
 
+![Demo](assets_github/nearochat-example.gif)
+
 ## **Funcionalidades**
 
 - **Criação e entrada em salas de chat**
